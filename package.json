@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "back": "nodemon server.js",
-    "front": "cd client && npm start",
-    "dev": "concurrently \"npm run front\" \"npm run back\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install client && npm run build client"
+    "start": "node server.js",
+    "server": "nodemon server.js --exec babel-node --presets babel-preset-env",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
     "frontEnd",
